@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom';
 
 import styled from './SidebarLinks.module.scss'
+import Icon from '../../icon/Icon';
 
 class SidebarLinks extends React.Component {
 
@@ -36,14 +37,10 @@ class SidebarLinks extends React.Component {
         const { collapseOpen } = this.state;
         if (!collapseLinks) {
             return (
-                <li className={styled.SidebarElement}>
-                    <NavLink
-                        to={headerLink}
-                        exact
-                    >
-                        <div>
-                            <span>{header}</span>
-                        </div>
+                <li className={styled.SidebarItem}>
+                    <NavLink to={headerLink} exact>
+                        {glyph && <Icon glyph={glyph} />}
+                        <span>{header}</span>
                     </NavLink>
                 </li>
             );

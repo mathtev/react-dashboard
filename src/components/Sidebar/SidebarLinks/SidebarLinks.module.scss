@@ -1,12 +1,28 @@
-.SidebarElement {
+@import '../../../styles/app.scss';
+
+.SidebarItem {
 
     list-style-type: none;
     
-    a {
+    > a {
+        display: flex;
+        justify-content: flex-start;
         text-decoration: none;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+        font-size: 16px;
+        font-family: open-sans-regular;
+        color: white;
+        opacity: 0.8;
+        padding: 1rem 0.5rem;
+
+        img {
+            width: 25px;
+            margin-right: 20px;
+        }
     }
 
     span {
-        
+
     }
 }
