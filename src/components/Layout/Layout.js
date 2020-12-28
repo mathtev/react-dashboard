@@ -8,25 +8,25 @@ import Notifications from '../../pages/notifications/Notifications';
 
 
 class Layout extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            sidebarOpen: false,
-        };
-    }
+    this.state = {
+      sidebarOpen: false,
+    };
+  }
 
-    render() {
-        return (
-            <div>
-                <Sidebar />
-                <Route path="/app/main" component={Homepage} />
-                <Route path="/app/sidebar" component={Sidebar} />
-                <Route path="/app/about" component={About} />
-                <Route path="/app/notifications" component={Notifications} />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <Sidebar />
+        <Route path="/app/main" component={Homepage} />
+        <Route path="/app/sidebar" component={Sidebar} />
+        <Route path="/app/about" component={About} />
+        <Route path="/app/notifications" component={Notifications} />
+      </div>
+    );
+  }
 }
 
 

@@ -5,8 +5,8 @@ import notifications from './notifications.svg'
 
 
 export default {
-    chart,
-    homepage,
-    logo,
-    notifications,
+  chart,
+  homepage,
+  logo,
+  notifications,
 }

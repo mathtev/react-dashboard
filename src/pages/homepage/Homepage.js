@@ -1,21 +1,21 @@
 import React from 'react'
 
 class Homepage extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            dropdownOpen: false,
-        };
-    }
+    this.state = {
+      dropdownOpen: false,
+    };
+  }
 
-    render() {
-        return (
-            <div>
-                Homepage
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        Homepage
+      </div>
+    );
+  }
 }
 
 
