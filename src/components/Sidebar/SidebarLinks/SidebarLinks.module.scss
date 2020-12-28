@@ -27,6 +27,7 @@
 }
 
 .collapseButton {
+  position: relative;
   background: none;
   outline: none;
   border: none;
@@ -79,9 +80,19 @@
 
 .activeLink {
   opacity: 1 !important;
-  background: rgb(4, 24, 46);
+  background: rgb(11, 64, 121);
 }
 
 .activeChildLink {
   opacity: 1 !important;
+}
+
+.arrow img {
+  position: absolute;
+  transition: 0.3s;
+  right: 0;
+}
+
+.arrowActive img {
+  transform: rotate(-90deg);
 }

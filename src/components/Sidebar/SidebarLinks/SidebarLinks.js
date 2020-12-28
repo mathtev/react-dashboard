@@ -1,4 +1,5 @@
 import React from 'react'
+import cx from 'classnames';
 import { Collapse } from 'reactstrap';
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom';
@@ -58,7 +59,9 @@ class SidebarLinks extends React.Component {
         >
           {glyph && <Icon glyph={glyph} />}
           {header}
-          
+          <span className={cx(styled.arrow, {[styled.arrowActive]: isOpen})} >
+            <Icon glyph="leftarrow" />
+          </span>
         </button>
         <Collapse className={styled.panel} isOpen={isOpen}>
           <ul>
