@@ -24,10 +24,9 @@
       margin-right: 20px;
     }
 
-    &:hover,
-    &:active,
-    &:focus {
+    &:hover {
       opacity: 1;
+      background: rgb(9, 48, 90);
     }
   }
 }
@@ -81,9 +80,7 @@
         color: white;
         cursor: pointer;
 
-        &:hover,
-        &:active,
-        &:focus {
+        &:hover {
           opacity: 1;
         }
       }
@@ -93,7 +90,7 @@
 
 .activeLink {
   opacity: 1 !important;
-  background: rgb(11, 64, 121);
+  background: rgb(9, 48, 90);
 }
 
 .activeChildLink {

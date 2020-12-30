@@ -12,7 +12,7 @@ class Homepage extends React.Component {
   render() {
     return (
       <div>
-        Homepage
+        Homepage Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam nesciunt repellat unde ducimus. Cumque autem optio harum voluptas perspiciatis ducimus, praesentium saepe doloremque consequuntur quam est quo officia aut ex!
       </div>
     );
   }

@@ -3,7 +3,6 @@ import cx from 'classnames';
 import { Collapse } from 'reactstrap';
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import styled from './SidebarLinks.module.scss'
 import Icon from '../../icon/Icon';
@@ -59,7 +58,7 @@ class SidebarLinks extends React.Component {
         >
           {glyph && <Icon glyph={glyph} />}
           {header}
-          <span className={cx(styled.arrow, {[styled.arrowActive]: isOpen})} >
+          <span className={cx(styled.arrow, { [styled.arrowActive]: isOpen })} >
             <Icon glyph="leftarrow" />
           </span>
         </button>
