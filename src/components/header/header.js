@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AiOutlineMail } from 'react-icons/ai';
+import { AiOutlineMail, AiOutlineSearch } from 'react-icons/ai';
 import {
   Navbar,
   Nav,
@@ -30,9 +30,16 @@ class Header extends React.Component {
 
   render() {
     return (
-      <Navbar>
+      <Navbar className={styled.root}>
         <Nav>
-          left navbar left leftleftleftleftleftleftleftleftleftleftleft
+          <NavItem>
+            <InputGroup>
+              <Input placeholder="Search for..." />
+              <InputGroupAddon addonType="append" className="px-2">
+                <AiOutlineSearch />
+              </InputGroupAddon>
+            </InputGroup>
+          </NavItem>
         </Nav>
         <Nav className="ml-auto">
           right navbar right
