@@ -15,6 +15,7 @@ import {
 } from 'reactstrap';
 
 import { AiOutlineSearch, AiFillBell } from 'react-icons/ai';
+import { FaBars } from 'react-icons/fa';
 import { GrMail } from 'react-icons/gr';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import { IoMdSettings } from 'react-icons/io';
@@ -32,6 +33,11 @@ const Header = (props) => {
   return (
     <Navbar className={styled.root}>
       <Nav>
+      <NavItem className={cx(styled.navBars, styled.headerIcon)}>
+          <Button>
+            <FaBars />
+          </Button>
+        </NavItem>
         <NavItem>
           <InputGroup>
             <Input placeholder="Search for..." />

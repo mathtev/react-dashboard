@@ -89,6 +89,13 @@
   }
 }
 
+.navBars {
+
+  display: initial;
+  @include media-breakpoint-up(md) {
+    display: none;
+  }
+}
 
 .dropdown {
 
