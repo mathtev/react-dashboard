@@ -6,7 +6,7 @@
   bottom: 0;
   left: 0;
   width: $sidebar-width;
-  background: linear-gradient(135deg, rgba(2, 0, 36, 1) 0%, rgba(5, 28, 53, 1) 0%, rgba(14, 49, 87, 1) 100%);
+  background: $dark-blue-gradient;
 
   .logo {
     height: $nav-height;

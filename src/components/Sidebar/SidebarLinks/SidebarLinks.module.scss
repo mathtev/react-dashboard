@@ -26,18 +26,18 @@
 
     &:hover {
       opacity: 1;
-      background: rgb(9, 48, 90);
+      background: $dark-blue-2;
     }
   }
 }
 
 .collapseButton {
-  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   background: none;
   outline: none;
   border: none;
-  display: flex;
-  justify-content: flex-start;
   width: 100%;
   opacity: 0.7;
   padding: 1rem 2rem;
@@ -63,7 +63,7 @@
 
   ul {
     padding: 0.5rem 0;
-    background: rgb(4, 24, 46);
+    background: $dark-blue-1;
 
     li {
 
@@ -90,17 +90,24 @@
 
 .activeLink {
   opacity: 1 !important;
-  background: rgb(9, 48, 90);
+  background: $dark-blue-2;
 }
 
 .activeChildLink {
   opacity: 1 !important;
 }
 
+.arrow {
+  width: 15px;
+  margin-left: auto;
+
+  img {
+    width: 100%;
+  }
+}
+
 .arrow img {
-  position: absolute;
   transition: 0.3s;
-  right: 0;
 }
 
 .arrowActive img {

@@ -21,7 +21,6 @@ const Sidebar = () => {
           headerLink="/app/main"
           glyph="homepage"
         />
-        <i class="AiOutlineMail"></i> 
         <SidebarLinks
           header="notifications"
           headerLink="/app/notifications"

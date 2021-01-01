@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { AiOutlineMail, AiOutlineSearch } from 'react-icons/ai';
+import React, { useState } from 'react';
+import cx from 'classnames';
 import {
   Navbar,
   Nav,
@@ -15,38 +14,68 @@ import {
   InputGroupAddon,
 } from 'reactstrap';
 
-import styled from './header.module.scss';
+import { AiOutlineSearch, AiFillBell } from 'react-icons/ai';
+import { GrMail } from 'react-icons/gr';
+import { RiArrowDropDownLine } from 'react-icons/ri';
+import { IoMdSettings } from 'react-icons/io';
+import faceImg from '../../images/face.jpeg';
+
+import styled from './Header.module.scss';
 
 
-class Header extends React.Component {
+const Header = (props) => {
 
-  constructor(props) {
-    super(props);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
 
-    this.state = {
-      isOpen: false,
-    };
-  }
 
-  render() {
-    return (
-      <Navbar className={styled.root}>
-        <Nav>
-          <NavItem>
-            <InputGroup>
-              <Input placeholder="Search for..." />
-              <InputGroupAddon addonType="append" className="px-2">
-                <AiOutlineSearch />
-              </InputGroupAddon>
-            </InputGroup>
-          </NavItem>
-        </Nav>
-        <Nav className="ml-auto">
-          right navbar right
-        </Nav>
-      </Navbar>
-    );
-  }
+  return (
+    <Navbar className={styled.root}>
+      <Nav>
+        <NavItem>
+          <InputGroup>
+            <Input placeholder="Search for..." />
+            <InputGroupAddon addonType="append" className="px-2">
+              <AiOutlineSearch />
+            </InputGroupAddon>
+          </InputGroup>
+        </NavItem>
+      </Nav>
+      <Nav className="ml-auto">
+        <NavItem className={styled.headerIcon}>
+          <Button>
+            <GrMail />
+          </Button>
+        </NavItem>
+        <NavItem className={styled.headerIcon}>
+          <Button>
+            <AiFillBell />
+          </Button>
+        </NavItem>
+        <NavItem className={styled.headerIcon}>
+          <Button>
+            <IoMdSettings />
+          </Button>
+        </NavItem>
+        <Dropdown className={styled.dropdown} isOpen={dropdownOpen} toggle={toggle}>
+          <DropdownToggle nav>
+            <img className={cx('rounded-circle mr-sm', styled.faceImg)} src={faceImg} alt="face img" />
+            <span>Administrator</span>
+            <RiArrowDropDownLine />
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem>
+              1st item
+              </DropdownItem>
+            <DropdownItem>
+              2st item
+              </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </Nav>
+    </Navbar>
+  );
 }
+
 
 export default Header;
