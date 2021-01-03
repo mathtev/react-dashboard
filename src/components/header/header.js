@@ -22,19 +22,20 @@ import { IoMdSettings } from 'react-icons/io';
 import faceImg from '../../images/face.jpeg';
 
 import styled from './Header.module.scss';
+import { NavLink } from 'react-router-dom';
 
 
 const Header = (props) => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
+  const toggleDropdown = () => setDropdownOpen(prevState => !prevState);
 
 
   return (
     <Navbar className={styled.root}>
       <Nav>
-      <NavItem className={cx(styled.navBars, styled.headerIcon)}>
-          <Button>
+        <NavItem className={cx(styled.navBars, styled.headerIcon)}>
+          <Button onClick={props.toggleSidebar}>
             <FaBars />
           </Button>
         </NavItem>
@@ -63,7 +64,7 @@ const Header = (props) => {
             <IoMdSettings />
           </Button>
         </NavItem>
-        <Dropdown className={styled.dropdown} isOpen={dropdownOpen} toggle={toggle}>
+        <Dropdown className={styled.dropdown} isOpen={dropdownOpen} toggle={toggleDropdown}>
           <DropdownToggle nav>
             <img className={cx('rounded-circle mr-sm', styled.faceImg)} src={faceImg} alt="face img" />
             <span>Administrator</span>
@@ -71,11 +72,14 @@ const Header = (props) => {
           </DropdownToggle>
           <DropdownMenu>
             <DropdownItem>
-              1st item
-              </DropdownItem>
+              <NavLink to="/app/profile">Profile</NavLink>
+            </DropdownItem>
             <DropdownItem>
-              2st item
-              </DropdownItem>
+              <NavLink to="/app/posts">Posts</NavLink>
+            </DropdownItem>
+            <DropdownItem>
+              Logout
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </Nav>
