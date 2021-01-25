@@ -52,11 +52,13 @@ const Header = (props) => {
         <NavItem className={styled.headerIcon}>
           <Button>
             <GrMail />
+            <span className="badge badge-pill badge-primary">12</span>
           </Button>
         </NavItem>
         <NavItem className={styled.headerIcon}>
           <Button>
             <AiFillBell />
+            <span className="badge badge-pill badge-primary">1</span>
           </Button>
         </NavItem>
         <NavItem className={styled.headerIcon}>
@@ -70,7 +72,7 @@ const Header = (props) => {
             <span>Administrator</span>
             <RiArrowDropDownLine />
           </DropdownToggle>
-          <DropdownMenu>
+          <DropdownMenu style={{width: '100%'}}>
             <DropdownItem>
               <NavLink to="/app/profile">Profile</NavLink>
             </DropdownItem>

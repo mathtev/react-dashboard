@@ -17,9 +17,9 @@ const Sidebar = () => {
       </header>
       <ul className={styled.items}>
         <SidebarLinks
-          header="homepage"
+          header="dashboard"
           headerLink="/app/main"
-          glyph="homepage"
+          glyph="dashboard"
         />
         <SidebarLinks
           header="notifications"

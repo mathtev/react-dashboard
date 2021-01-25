@@ -3,10 +3,11 @@ import { Route, Switch } from 'react-router';
 import cx from 'classnames';
 
 import Sidebar from '../Sidebar/Sidebar';
-import Homepage from '../../pages/homepage/Homepage';
+import Dashboard from '../../pages/dashboard/Dashboard';
 import About from '../../pages/about/About';
 import Notifications from '../../pages/notifications/Notifications';
 import Header from '../header/Header';
+import Tables from '../../pages/tables/Tables';
 
 import styled from './Layout.module.scss'
 
@@ -20,11 +21,12 @@ const Layout = (props) => {
       <Sidebar />
       <div className={cx(styled.wrap, {[styled.sidebarOpened]: sidebarOpen})}>
         <Header toggleSidebar={toggleSidebar} />
-        <main>
+        <main className={styled.content}>
           <Switch>
-            <Route path="/app/main" component={Homepage} />
+            <Route path="/app/main" component={Dashboard} />
             <Route path="/app/about" component={About} />
             <Route path="/app/notifications" component={Notifications} />
+            <Route path="/app/tables" component={Tables} />
           </Switch>
         </main>
       </div>

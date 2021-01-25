@@ -1,7 +1,7 @@
-@import 'bootstrap/dist/css/bootstrap.min.css';
+@import '~bootstrap/scss/bootstrap';
 @import './_general';
 @import './_mixins';
 @import './_variables';
 @import './_fonts';
-@import './overrides';
+@import './_overrides';
 
