@@ -9,7 +9,6 @@
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    opacity: 0.7;
     padding: 1rem 2rem;
     text-decoration: none;
     text-transform: capitalize;
@@ -24,9 +23,10 @@
       margin-right: 20px;
     }
 
-    &:hover {
-      opacity: 1;
-      background: $dark-blue-2;
+    &:hover,
+    &:focus,
+    &:active {
+      background: $sidebar-color-active;
     }
   }
 }
@@ -39,7 +39,6 @@
   outline: none;
   border: none;
   width: 100%;
-  opacity: 0.7;
   padding: 1rem 2rem;
   text-decoration: none;
   text-transform: capitalize;
@@ -63,14 +62,13 @@
 
   ul {
     padding: 0.5rem 0;
-    background: $dark-blue-1;
+    background: $sidebar-color-collapse;
 
     li {
 
       >a {
         display: inline-block;
         width: 100%;
-        opacity: 0.7;
         padding-left: 77px;
         text-decoration: none;
         text-transform: capitalize;
@@ -80,8 +78,10 @@
         color: white;
         cursor: pointer;
 
-        &:hover {
-          opacity: 1;
+        &:hover,
+        &:focus,
+        &:active {
+          color: rgb(123, 160, 238);
         }
       }
     }
@@ -89,12 +89,11 @@
 }
 
 .activeLink {
-  opacity: 1 !important;
-  background: $dark-blue-2;
+  background: $sidebar-color-active;
 }
 
 .activeChildLink {
-  opacity: 1 !important;
+  color: rgb(123, 160, 238) !important;
 }
 
 .arrow {

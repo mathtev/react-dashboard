@@ -61,12 +61,7 @@ const Header = (props) => {
             <span className="badge badge-pill badge-primary">1</span>
           </Button>
         </NavItem>
-        <NavItem className={styled.headerIcon}>
-          <Button>
-            <IoMdSettings />
-          </Button>
-        </NavItem>
-        <Dropdown className={styled.dropdown} isOpen={dropdownOpen} toggle={toggleDropdown}>
+        <Dropdown className={cx(styled.dropdown, "ml-3")} isOpen={dropdownOpen} toggle={toggleDropdown}>
           <DropdownToggle nav>
             <img className={cx('rounded-circle mr-sm', styled.faceImg)} src={faceImg} alt="face img" />
             <span>Administrator</span>

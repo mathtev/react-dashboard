@@ -8,8 +8,12 @@ const Widget = (props) => {
     <section className={styled.widget}>
       {props.title && <header>{props.title}</header>}
       <div>{props.children}</div>
-      <hr></hr>
-      <footer>{props.footer}</footer>
+      {props.footer &&
+        <footer>
+          <hr></hr>
+          {props.footer}
+        </footer>
+      }
     </section>
   )
 }
