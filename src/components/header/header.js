@@ -18,7 +18,6 @@ import { AiOutlineSearch, AiFillBell } from 'react-icons/ai';
 import { FaBars } from 'react-icons/fa';
 import { GrMail } from 'react-icons/gr';
 import { RiArrowDropDownLine } from 'react-icons/ri';
-import { IoMdSettings } from 'react-icons/io';
 import faceImg from '../../images/face.jpeg';
 
 import styled from './Header.module.scss';

@@ -6,7 +6,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import Dashboard from '../../pages/dashboard/Dashboard';
 import About from '../../pages/about/About';
 import Notifications from '../../pages/notifications/Notifications';
-import Header from '../header/Header';
+import Header from '../Header/Header';
 import Tables from '../../pages/tables/Tables';
 
 import styled from './Layout.module.scss'
