@@ -8,6 +8,8 @@ const Notifications = (props) => {
   );
 }
 
+const mapStateToProps = (state) => {
+  
+}
 
-
-export default Notifications;
+export default connect(mapStateToProps)(Notifications);
