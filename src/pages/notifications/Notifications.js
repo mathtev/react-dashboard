@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 const Notifications = (props) => {
   return (
@@ -9,7 +10,7 @@ const Notifications = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  
+  //code
 }
 
 export default connect(mapStateToProps)(Notifications);

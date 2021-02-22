@@ -6,13 +6,13 @@ import ReduxThunk from 'redux-thunk'
 import reportWebVitals from './reportWebVitals';
 
 import App from './components/App';
-import reducers from './reducers';
+import reducers from './reducers/posts';
 
 const store = createStore(
   reducers,
   applyMiddleware(ReduxThunk)
 );
-
+ 
 ReactDOM.render(
   <Provider store={store}>
     <App />

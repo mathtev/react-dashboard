@@ -18,4 +18,12 @@ app.use('/graphql', graphqlHTTP({
   graphiql: true,
 }));
 
-app.listen(4000, () => console.log("listenning to port 4000"));
+const PORT = process.env.REACT_APP_PORT || 4000;
+
+app.listen(4000, () => console.log(`server listenning to port ${PORT}`));
+
+process.on('unhandledRejection', (err, promise) => {
+  console.log(`Unhandled Rejection: ${err.message}`)
+  // Close server 
+  server.close(() => process.exit(1))
+})

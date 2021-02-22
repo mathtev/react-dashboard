@@ -1,4 +1,4 @@
-import { TYPE_TEST } from '../actions';
+import { TYPE_TEST } from '../actions/posts';
 
 const initialState = { isfetching: false };
 
