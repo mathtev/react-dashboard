@@ -1,16 +1,30 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
+import { test } from '../../actions/posts';
 
 const Notifications = (props) => {
+
+  const { test } = props;
+
+  useEffect(() => {
+    test();
+  }, [test]);
+
   return (
     <div>
-      Notifications Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, consectetur eligendi impedit quisquam explicabo adipisci reprehenderit doloribus voluptates, illum voluptas tenetur! Ea officiis adipisci ad iste quas, repudiandae ipsum mollitia?
+      {console.log(props)}
     </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  //code
-}
+const mapStateToProps = (state) => ({
+  isFetching: state.posts.isFetching,
+});
 
-export default connect(mapStateToProps)(Notifications);
+const mapDispatchToProps = (dispatch) => ({
+  test: () => { dispatch(test()) },
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications);

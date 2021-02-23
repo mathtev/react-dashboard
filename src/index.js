@@ -6,7 +6,7 @@ import ReduxThunk from 'redux-thunk'
 import reportWebVitals from './reportWebVitals';
 
 import App from './components/App';
-import reducers from './reducers/posts';
+import reducers from './reducers';
 
 const store = createStore(
   reducers,
