@@ -22,6 +22,7 @@ const useFetch = () => {
 }
 
 const Tables = () => {
+  // eslint-disable-next-line
   const [mainTable, setMainTable] = useState({
     tableRows: [
       {
@@ -124,7 +125,7 @@ const Tables = () => {
                         {tableRow.id}
                       </td>
                       <td>
-                        <img src={tableRow.picture} />
+                        <img src={tableRow.picture} alt="table img"/>
                       </td>
                       <td>
                         {tableRow.description}

@@ -1,12 +1,35 @@
-import { TYPE_TEST } from '../actions/posts';
+import {
+  CREATE_POST_SUCCESS,
+  CREATE_POST_FAILURE,
+  FETCH_POST_REQUEST,
+  FETCH_POST_SUCCESS,
+  FETCH_POST_FAILURE
+} from '../actions/posts';
 
-const initialState = { isFetching: false };
+const initialState = {
+  isFetching: false
+};
 
 const postsReducer = (state = initialState, action) => {
-  console.log("this message wont show;")
   switch (action.type) {
-    case TYPE_TEST:
-      return Object.assign({}, state, { 
+    case CREATE_POST_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: true,
+      });
+    case CREATE_POST_FAILURE:
+      return Object.assign({}, state, {
+        isFetching: true,
+      });
+    case CREATE_POST_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: false,
+      });
+    case CREATE_POST_SUCCESS:
+      return Object.assign({}, state, {
+        isFetching: true,
+      });
+    case CREATE_POST_SUCCESS:
+      return Object.assign({}, state, {
         isFetching: true,
       });
     default:

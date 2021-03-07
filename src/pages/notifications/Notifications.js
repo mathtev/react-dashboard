@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { test } from '../../actions/posts';
+import { fetchPosts } from '../../actions/posts';
 
 const Notifications = (props) => {
 
-  const { test } = props;
+  const { fetchPosts } = props;
 
   useEffect(() => {
-    test();
-  }, [test]);
+    fetchPosts();
+  }, [fetchPosts]);
 
   return (
     <div>
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  test: () => { dispatch(test()) },
+  fetchPosts: () => { dispatch(fetchPosts()) },
 });
 
 

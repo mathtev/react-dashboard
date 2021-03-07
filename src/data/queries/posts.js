@@ -8,14 +8,6 @@ const Post = require('../models/Post.js');
 
 const posts = {
   type: GraphQLList(PostType),
-  // resolve: () => (
-  //   [{
-  //     id: 1,
-  //     title: 'lol',
-  //     content: 'lol2',
-  //     updatedAt: 'hehe lol',
-  //   }]
-  // ),
   resolve: resolver(Post),
 };
 

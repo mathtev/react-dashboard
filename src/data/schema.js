@@ -5,7 +5,7 @@ const posts = require('./queries/posts.js');
 
 const RootQuery = {
   query: new GraphQLObjectType({
-    name: 'RootQuery',
+    name: 'Query',
     fields: {
       posts,
     },
