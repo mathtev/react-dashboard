@@ -20,6 +20,7 @@ const Notifications = (props) => {
 
 const mapStateToProps = (state) => ({
   isFetching: state.posts.isFetching,
+  posts: state.posts.posts,
 });
 
 const mapDispatchToProps = (dispatch) => ({

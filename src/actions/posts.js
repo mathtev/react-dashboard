@@ -53,10 +53,10 @@ export const fetchPosts = () => {
       return responseJson.data.posts;
     }).then(posts => {
       if (!posts){
-        fetchPostFailure("Couldn't fetch any posts");
+        dispatch(fetchPostFailure("Couldn't fetch any posts"));
       }
       else {
-        fetchPostSuccess(posts);
+        dispatch(fetchPostSuccess(posts));
       }
     });
   }

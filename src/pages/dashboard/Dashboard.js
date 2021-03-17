@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Row, Col } from 'reactstrap';
+import { connect } from 'react-redux';
 
 import { BiCoinStack } from 'react-icons/bi';
 import { AiOutlineTwitter } from 'react-icons/ai';
@@ -9,6 +10,8 @@ import Widget from '../../components/Widget/Widget';
 import MyLineChart from '../../components/charts/MyLineChart';
 import MyBarChart from '../../components/charts/MyBarChart';
 import styled from './Dashboard.module.scss';
+import { fetchPosts } from '../../actions/posts';
+
 
 
 const data = [
@@ -22,6 +25,13 @@ const data = [
 ];
 
 const Dashboard = (props) => {
+
+  const { fetchPosts } = props;
+
+  useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts]);
+
   return (
     <div className={styled.root}>
       <Row>
@@ -79,14 +89,14 @@ const Dashboard = (props) => {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col className="col-xl-6">
           <Widget>
             <h3>Line Chart</h3>
             <p className="text-muted">24 hour performance</p>
             <MyLineChart data={data} />
           </Widget>
         </Col>
-        <Col>
+        <Col className="col-xl-6">
           <Widget>
             <h3>Bar Chart</h3>
             <p className="text-muted">24 hour performance</p>
@@ -94,9 +104,28 @@ const Dashboard = (props) => {
           </Widget>
         </Col>
       </Row>
+      <Row>
+        <Col className="col-xl-6">
+          <Widget>
+            <h3>Posts</h3>
+            {props.posts && props.posts.map(post => (
+              <p key={post.id}>{post.title}</p>
+            ))}
+          </Widget>
+        </Col>
+      </Row>
     </div >
   );
 }
 
+const mapStateToProps = (state) => ({
+  isFetching: state.posts.isFetching,
+  posts: state.posts.posts,
+});
 
-export default Dashboard;
+const mapDispatchToProps = (dispatch) => ({
+  fetchPosts: () => { dispatch(fetchPosts()) },
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

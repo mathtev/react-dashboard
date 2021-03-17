@@ -20,17 +20,19 @@ const postsReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isFetching: true,
       });
-    case CREATE_POST_SUCCESS:
+    case FETCH_POST_REQUEST: 
       return Object.assign({}, state, {
         isFetching: false,
       });
-    case CREATE_POST_SUCCESS:
+    case FETCH_POST_SUCCESS:
       return Object.assign({}, state, {
-        isFetching: true,
+        isFetching: false,
+        posts: action.posts
       });
-    case CREATE_POST_SUCCESS:
+    case FETCH_POST_FAILURE:
       return Object.assign({}, state, {
-        isFetching: true,
+        isFetching: false,
+        message: action.message
       });
     default:
       return state;
