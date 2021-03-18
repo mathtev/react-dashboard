@@ -107,56 +107,54 @@ const Tables = () => {
         <Col lg={12}>
           <Widget>
             <h3 className="pb-3">Main Table</h3>
-            <div style={{ overflowX: 'auto' }}>
-              <Table className={cx(styled.mainTable)}>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>PICTURE</th>
-                    <th>DESCRIPTION</th>
-                    <th>DATE</th>
-                    <th>INFO</th>
+            <Table className={cx(styled.mainTable)}>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>PICTURE</th>
+                  <th>DESCRIPTION</th>
+                  <th>DATE</th>
+                  <th>INFO</th>
+                </tr>
+              </thead>
+              <tbody>
+                {mainTable.tableRows.map(tableRow => (
+                  <tr key={tableRow.id}>
+                    <td>
+                      {tableRow.id}
+                    </td>
+                    <td>
+                      <img src={tableRow.picture} alt="table img" />
+                    </td>
+                    <td>
+                      {tableRow.description}
+                    </td>
+                    <td>
+                      {tableRow.date}
+                    </td>
+                    <td>
+                      <p className="mb-0">
+                        <small>
+                          <b>Size:&nbsp;</b>
+                          {tableRow.info.size}
+                        </small>
+                      </p>
+                      <p className="mb-0">
+                        <small>
+                          <b>Type:&nbsp;</b>
+                          {tableRow.info.type}
+                        </small>
+                      </p>
+                    </td>
+                    <td style={{ width: '60px' }}>
+                      <Progress
+                        color="success" value={tableRow.progress}
+                      />
+                    </td>
                   </tr>
-                </thead>
-                <tbody>
-                  {mainTable.tableRows.map(tableRow => (
-                    <tr>
-                      <td>
-                        {tableRow.id}
-                      </td>
-                      <td>
-                        <img src={tableRow.picture} alt="table img"/>
-                      </td>
-                      <td>
-                        {tableRow.description}
-                      </td>
-                      <td>
-                        {tableRow.date}
-                      </td>
-                      <td>
-                        <p className="mb-0">
-                          <small>
-                            <b>Size:&nbsp;</b>
-                            {tableRow.info.size}
-                          </small>
-                        </p>
-                        <p className="mb-0">
-                          <small>
-                            <b>Type:&nbsp;</b>
-                            {tableRow.info.type}
-                          </small>
-                        </p>
-                      </td>
-                      <td style={{ width: '60px' }}>
-                        <Progress
-                          color="success" value={tableRow.progress}
-                        />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
-            </div>
+                ))}
+              </tbody>
+            </Table>
           </Widget>
         </Col>
       </Row>

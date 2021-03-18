@@ -1,15 +1,20 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchPosts } from '../../actions/posts';
+import { addNewPost, fetchPosts } from '../../actions/posts';
 
 const Notifications = (props) => {
 
-  const { fetchPosts } = props;
+  const { fetchPosts, addNewPost } = props;
+  const postData = { 
+    title: 'if this works i will be happy', 
+    content: 'it will be really awesome if it works' 
+  }
 
   useEffect(() => {
     fetchPosts();
-  }, [fetchPosts]);
+    addNewPost(postData);
+  }, [fetchPosts, addNewPost]);
 
   return (
     <div>
@@ -25,6 +30,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchPosts: () => { dispatch(fetchPosts()) },
+  addNewPost: (postData) => { dispatch(addNewPost(postData)) },
 });
 
 

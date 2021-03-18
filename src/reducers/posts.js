@@ -1,6 +1,6 @@
 import {
-  CREATE_POST_SUCCESS,
-  CREATE_POST_FAILURE,
+  ADD_NEW_POST_SUCCESS,
+  ADD_NEW_POST_FAILURE,
   FETCH_POST_REQUEST,
   FETCH_POST_SUCCESS,
   FETCH_POST_FAILURE
@@ -12,17 +12,19 @@ const initialState = {
 
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_POST_SUCCESS:
+    case ADD_NEW_POST_SUCCESS:
       return Object.assign({}, state, {
-        isFetching: true,
+        isFetching: false,
+        post: action.post
       });
-    case CREATE_POST_FAILURE:
+    case ADD_NEW_POST_FAILURE:
       return Object.assign({}, state, {
-        isFetching: true,
+        isFetching: false,
+        message: action.message
       });
     case FETCH_POST_REQUEST: 
       return Object.assign({}, state, {
-        isFetching: false,
+        isFetching: true,
       });
     case FETCH_POST_SUCCESS:
       return Object.assign({}, state, {
