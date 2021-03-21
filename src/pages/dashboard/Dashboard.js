@@ -108,8 +108,12 @@ const Dashboard = (props) => {
         <Col className="col-xl-6">
           <Widget>
             <h3>Posts</h3>
-            {props.posts && props.posts.map(post => (
-              <p key={post.id}>{post.title}</p>
+            <hr></hr>
+            {props.posts && props.posts.slice(0, 6).map(post => (
+              <p key={post.id}>
+                {post.title}
+                <span className="pull-right text-muted">{post.updatedAt}</span>
+              </p>
             ))}
           </Widget>
         </Col>

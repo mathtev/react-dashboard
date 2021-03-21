@@ -32,7 +32,7 @@ const SidebarLinks = (props) => {
         className={styled.collapseButton}
         onClick={() => setCollapseOpen(!collapseOpen)}
       >
-        {glyph && <Icon glyph={glyph} />}
+        {glyph && < Icon glyph={glyph} />}
         {header}
         <span className={cx(styled.arrow, { [styled.arrowActive]: collapseOpen })} >
           <Icon glyph="leftarrow" />

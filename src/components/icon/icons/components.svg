@@ -1,0 +1,16 @@
+<svg width="480" height="480" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1">
+   <path id="svg_3" stroke-width="15.3601" stroke-miterlimit="10" stroke="#ffffff" fill="none" d="m170.509,59.28l0,67.608m69.49,-67.608l0,67.608m69.49,-67.608l0,67.608m-138.98,226.223l0,67.606m69.49,-67.606l0,67.606m69.49,-67.606l0,67.606"/>
+   <path id="svg_4" stroke-width="15.3601" stroke-miterlimit="10" stroke="#ffffff" fill="none" d="m59.281,309.488l67.608,0m-67.608,-69.489l67.608,0m-67.608,-69.49l67.608,0m226.222,138.979l67.607,0m-67.607,-69.489l67.607,0m-67.607,-69.49l67.607,0"/>
+   <polygon id="svg_2" stroke-width="15.3601" stroke-miterlimit="10" stroke="#ffffff" points="352.1949345469475,128.0950739979744 125.96992081403732,128.0950739979744 125.96992081403732,353.747082054615 352.1949345469475,353.747082054615 " fill="none"/>
+   <path id="svg_5" stroke-width="15.3601" stroke-miterlimit="10" fill="none" d="m284.412077,184.167l17.196,0m-17.196,55.835l17.196,0m-17.196,55.832l17.196,0m-121.36,-111.667l17.197,0m-17.197,55.835l17.197,0m-17.197,55.832l17.197,0m34.884,-111.667l17.197,0m-17.197,55.835l17.197,0m-17.197,55.832l17.197,0"/>
+  </g>
+ </g>
+</svg>

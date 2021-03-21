@@ -44,7 +44,7 @@ export const fetchPosts = () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      query: '{posts{id,title}}',
+      query: '{posts{id,title,content,updatedAt}}',
     }),
   }
   return dispatch => {
@@ -55,8 +55,10 @@ export const fetchPosts = () => {
     }).then(posts => {
       if (!posts) {
         dispatch(fetchPostFailure("Couldn't fetch posts"));
+        return Promise.reject(posts);
       } else {
         dispatch(fetchPostSuccess(posts));
+        return Promise.resolve(posts);
       }
     });
   }
@@ -87,8 +89,10 @@ export const addNewPost = (postData) => {
         const post = responseJson.data.addPost;
         if (response.ok) {
           dispatch(addNewPostSuccess(post));
+          return Promise.resolve(post);
         } else {
           dispatch(addNewPostFailure('Could not create a post, check addNewPost() action'));
+          return Promise.reject();
         }
         return responseJson.data.addPost;
       });

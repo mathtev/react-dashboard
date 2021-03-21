@@ -13,12 +13,12 @@ const Notifications = (props) => {
 
   useEffect(() => {
     fetchPosts();
-    addNewPost(postData);
+    //addNewPost(postData);
   }, [fetchPosts, addNewPost]);
 
   return (
     <div>
-      {console.log(props)}
+      
     </div>
   );
 }

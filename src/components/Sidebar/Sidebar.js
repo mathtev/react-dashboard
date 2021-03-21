@@ -29,12 +29,12 @@ const Sidebar = () => {
         <SidebarLinks
           header="tables"
           headerLink="/app/tables"
-          glyph="notifications"
+          glyph="tables"
         />
         <SidebarLinks
           header="users"
           headerLink="/app/users"
-          glyph="notifications"
+          glyph="users"
         />
         <SidebarLinks
           header="components"
@@ -57,7 +57,7 @@ const Sidebar = () => {
               link: '/app/components/maps',
             },
           ]}
-          glyph="notifications"
+          glyph="components"
         />
       </ul>
     </nav>
