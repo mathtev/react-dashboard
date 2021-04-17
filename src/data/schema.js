@@ -1,4 +1,4 @@
-const { GraphQLSchema, GraphQLObjectType } = require('graphql');
+ const { GraphQLSchema, GraphQLObjectType } = require('graphql');
 
 const posts = require('./queries/posts.js');
 const addPost = require('./mutations/addPost.js');
