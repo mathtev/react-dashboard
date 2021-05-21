@@ -3,6 +3,7 @@
 const me = require('./queries/me.js');
 const posts = require('./queries/posts.js');
 const addPost = require('./mutations/addPost.js');
+const addUser = require('./mutations/addUser.js');
 
 
 const RootQuery = {
@@ -18,7 +19,8 @@ const RootQuery = {
 RootQuery.mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
-    addPost
+    addPost,
+    addUser
   }
 })
 

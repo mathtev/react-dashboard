@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Alert, Button, FormGroup, Input, Row, Col, Form } from 'reactstrap';
 import styled from './Login.module.scss';
@@ -93,9 +93,9 @@ const Login = ({
                 </a>{' '}
                 {/* eslint-disable-line */}
                 <div>
-                  <Button color="default" size="sm">
+                  <Link to="/register" >
                     Create an account
-                  </Button>
+                  </Link>
                   <Button color="success" size="sm" type="submit">
                     {isFetching ? 'Loading...' : 'Login'}
                   </Button>

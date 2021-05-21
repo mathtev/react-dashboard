@@ -9,7 +9,7 @@ module.exports = new GraphQLObjectType({
   name: 'User',
   fields: {
     id: { type: new GraphQLNonNull(GraphQLID) },
-    name: { type: GraphQLString },
+    username: { type: GraphQLString },
     email: { type: GraphQLString },
   },
 });
