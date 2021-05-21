@@ -21,7 +21,9 @@ import { RiArrowDropDownLine } from 'react-icons/ri';
 import faceImg from '../../images/face.jpeg';
 
 import styled from './Header.module.scss';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../actions/login';
 
 
 const Header = (props) => {
@@ -29,6 +31,14 @@ const Header = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggleDropdown = () => setDropdownOpen(prevState => !prevState);
 
+  const doLogout = () => {
+    props.logoutUser();
+  }
+
+  if (!props.isAuthenticated) {
+    // cant access login page while logged in
+    return <Redirect to={'/login'} />;
+  }
 
   return (
     <Navbar className={styled.root}>
@@ -73,7 +83,7 @@ const Header = (props) => {
             <DropdownItem>
               <NavLink to="/app/posts">Posts</NavLink>
             </DropdownItem>
-            <DropdownItem>
+            <DropdownItem onClick={doLogout}>
               Logout
             </DropdownItem>
           </DropdownMenu>
@@ -83,5 +93,17 @@ const Header = (props) => {
   );
 }
 
+function mapStateToProps(state) {
+  return {
+    isAuthenticated: state.login.isAuthenticated,
+  };
+}
 
-export default Header;
+const mapDispatchToProps = (dispatch) => ({
+  logoutUser: () => {
+    dispatch(logoutUser());
+  },
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

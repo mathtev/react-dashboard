@@ -10,6 +10,7 @@ import Header from '../Header/Header';
 import Tables from '../../pages/tables/Tables';
 
 import styled from './Layout.module.scss'
+import Login from '../../pages/login/Login';
 
 const Layout = (props) => {
 

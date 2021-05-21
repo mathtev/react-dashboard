@@ -5,6 +5,7 @@ module.exports = new Sequelize('sequelize', 'postgres', '12346', {
   dialect: 'postgres',
   define: {
     freezeTableName: true,
+    timestamps: false
   },
 });
 

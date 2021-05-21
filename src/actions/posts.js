@@ -84,8 +84,14 @@ export const addNewPost = (postData) => {
   }
   return dispatch => {
     fetch('http://localhost:4000/graphql', fetchConfig)
-      .then(response => response.json().then(responseJson => ({ responseJson, response })))
-      .then(({ responseJson, response }) => {
+      .then(response => response.json().then(responseJson => ({
+        responseJson,
+        response
+      })))
+      .then(({
+        responseJson,
+        response
+      }) => {
         const post = responseJson.data.addPost;
         if (response.ok) {
           dispatch(addNewPostSuccess(post));
@@ -94,7 +100,6 @@ export const addNewPost = (postData) => {
           dispatch(addNewPostFailure('Could not create a post, check addNewPost() action'));
           return Promise.reject();
         }
-        return responseJson.data.addPost;
       });
   }
 };

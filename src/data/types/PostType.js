@@ -26,6 +26,10 @@ const PostType = new GraphQLObjectType({
       type: GraphQLString,
       description: 'Date when the post was updated',
     },
+    createdAt: {
+      type: GraphQLString,
+      description: 'Date when the post was created',
+    },
   }),
 });
 
