@@ -1,14 +1,9 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
 const cookieParser = require(`cookie-parser`);
 const expressJwt = require(`express-jwt`);
-
-const User = require('../src/data/models/LoginUser');
 const schema = require('../src/data/schema.js');
-const chartsData = require('./serverData/charts.js');
-
 
 //database
 const db = require('../src/data/sequelize.js');
@@ -37,36 +32,6 @@ app.use(
   })
 );
 
-app.post('/login', async (req, res) => {
-  // replace with real database check in production
-  // const user = graphql.find(req.login, req.password);
-  let user = await User.findOne({
-    where: {
-      username: req.body.login,
-      password: req.body.password
-    }
-  });
-  const login = req.body.login; // eslint-disable-line
-  const password = req.body.password; // eslint-disable-line
-  if (login === 'user' && password === 'password') {
-    user = { user, login };
-  }
-
-  if (user) {
-    const expiresIn = 60 * 60 * 24 * 180; // 180 days
-    const token = jwt.sign(user.toJSON(), 'React Dashboard', { expiresIn });
-    res.cookie('id_token', token, {
-      maxAge: 1000 * expiresIn,
-      httpOnly: false,
-    });
-    res.json({ user });
-  } else {
-    res
-      .status(401)
-      .json({ message: 'To login use user: "user", password: "password".' });
-  }
-});
-
 app.use(
   '/graphql',
   graphqlHTTP((req, resp) => {
@@ -77,15 +42,11 @@ app.use(
   })
 );
 
-app.get('/post/:id', function (req, res, next) {
-  res.send(`hello world ${req.params.id}`);
-  next();
-});
 
-app.get('/api/charts', function (req, res, next) {
-  res.send(chartsData);
-  next();
-});
+require('./routes/login')(app);
+require('./routes/post')(app);
+require('./routes/charts')(app);
+
 
 const PORT = process.env.REACT_APP_PORT || 4000;
 
