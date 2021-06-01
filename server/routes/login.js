@@ -2,13 +2,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../../src/data/models/LoginUser');
 const createSession = require('../amqp/publisher');
 
-const fakeData = { greeting: 'welcome', name: 'Unknown' };
-
-
 module.exports = (app) => {
   app.post('/login', async (req, res) => {
-
-    createSession(fakeData);
     let user;
     const login = req.body.login; // eslint-disable-line
     const password = req.body.password; // eslint-disable-line
@@ -25,6 +20,12 @@ module.exports = (app) => {
     }
 
     if (user) {
+      createSession({
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        loggedInAt: new Date().toISOString(),
+      });
       const expiresIn = 60 * 60 * 24 * 180; // 180 days
       const token = jwt.sign(user, 'React Dashboard', { expiresIn });
       res.cookie('id_token', token, {
