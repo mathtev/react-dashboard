@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Table } from 'reactstrap';
 import { fetchPosts } from '../../../actions/posts';
 import Widget from '../../../components/Widget/Widget';
 
-const PostsList = ({ isFetching, posts }) => {
+const PostsList = ({ isFetching, posts, fetchPosts }) => {
   useEffect(() => {
     fetchPosts();
   }, []);
@@ -33,6 +33,18 @@ const PostsList = ({ isFetching, posts }) => {
                   <td>{post.id}</td>
                   <td>{post.title}</td>
                   <td>{post.content}</td>
+                  <td>
+                    {' '}
+                    <Link
+                      to={{
+                        pathname: `/app/posts/${post.id}`,
+                        state: { post },
+                      }}
+                    >
+                      view
+                      <br /> details
+                    </Link>
+                  </td>
                 </tr>
               ))}
           </tbody>

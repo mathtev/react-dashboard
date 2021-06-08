@@ -2,6 +2,7 @@
 
 const me = require('./queries/me.js');
 const posts = require('./queries/posts.js');
+const {allPosts, postById} = require('./queries/posts.js');
 const addPost = require('./mutations/addPost.js');
 const addUser = require('./mutations/addUser.js');
 
@@ -11,7 +12,8 @@ const RootQuery = {
     name: 'Query',
     fields: {
       me,
-      posts,
+      allPosts,
+      postById
     },
   }),
 };

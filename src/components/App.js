@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router';
 import { HashRouter } from 'react-router-dom';
@@ -15,7 +15,6 @@ const PrivateRoute = ({ logout, component, ...rest }) => {
     return <Redirect to="/login" />;
   } else {
     return (
-      // eslint-disable-line
       <Route
         {...rest}
         render={(props) => React.createElement(component, props)}

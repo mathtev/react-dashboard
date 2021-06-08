@@ -44,14 +44,14 @@ export const fetchPosts = () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      query: '{posts{id,title,content,updatedAt}}',
+      query: '{allPosts{id,title,content,updatedAt}}',
     }),
   }
   return dispatch => {
     fetch('http://localhost:4000/graphql', fetchConfig).then(response => {
       return response.json();
     }).then(responseJson => {
-      return responseJson.data.posts;
+      return responseJson.data.allPosts;
     }).then(posts => {
       if (!posts) {
         dispatch(fetchPostFailure("Couldn't fetch posts"));
@@ -59,6 +59,36 @@ export const fetchPosts = () => {
       } else {
         dispatch(fetchPostSuccess(posts));
         return Promise.resolve(posts);
+      }
+    });
+  }
+};
+
+export const fetchPostById = (postId) => {
+  const fetchConfig = {
+    mode: 'cors',
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `{postById(id: ${postId}){id,title,content,updatedAt}}`,
+    }),
+  }
+  return dispatch => {
+    fetch('http://localhost:4000/graphql', fetchConfig).then(response => {
+      return response.json();
+    }).then(responseJson => {
+      console.log(responseJson)
+      return responseJson.data.postById;
+    }).then(post => {
+      if (!post) {
+        dispatch(fetchPostFailure("Couldn't fetch posts"));
+        return Promise.reject(post);
+      } else {
+        dispatch(fetchPostSuccess(post));
+        return Promise.resolve(post);
       }
     });
   }
