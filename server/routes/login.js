@@ -1,6 +1,12 @@
 const jwt = require('jsonwebtoken');
 const User = require('../../src/data/models/LoginUser');
 const createSession = require('../amqp/publisher');
+const bcrypt = require('bcrypt');
+
+async function comparePasswords(password, hash) {
+  const isSame = await bcrypt.compare(password, hash);
+  return isSame;
+}
 
 module.exports = (app) => {
   app.post('/login', async (req, res) => {
@@ -13,10 +19,13 @@ module.exports = (app) => {
       user = await User.findOne({
         where: {
           username: req.body.login,
-          password: req.body.password,
         },
       });
       user = user ? user.toJSON() : null;
+      const passwordMatch = await comparePasswords(req.body.password, user.password);
+      if (!passwordMatch) {
+        user = null;
+      }
     }
 
     if (user) {
@@ -32,7 +41,7 @@ module.exports = (app) => {
         maxAge: 1000 * expiresIn,
         httpOnly: false,
       });
-      res.json({ user });
+      res.json({ id_token: token });
     } else {
       res
         .status(401)

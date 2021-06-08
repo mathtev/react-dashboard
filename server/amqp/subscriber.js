@@ -23,7 +23,7 @@ async function connect() {
   }
 }
 
-app.get('/send', function(req, res) {
+app.get('/loghistory', function(req, res) {
   res.send(receivedData);
 });
 

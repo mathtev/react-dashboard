@@ -10,7 +10,8 @@ import Header from '../Header/Header';
 import Tables from '../../pages/tables/Tables';
 
 import styled from './Layout.module.scss'
-import Login from '../../pages/login/Login';
+import Posts from '../../pages/posts/Posts';
+
 
 const Layout = (props) => {
 
@@ -26,6 +27,7 @@ const Layout = (props) => {
           <Switch>
             <Route path="/app/main" component={Dashboard} />
             <Route path="/app/about" component={About} />
+            <Route path="/app/posts" component={Posts} />
             <Route path="/app/notifications" component={Notifications} />
             <Route path="/app/tables" component={Tables} />
           </Switch>

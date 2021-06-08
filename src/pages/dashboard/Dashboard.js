@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 
 import { BiCoinStack } from 'react-icons/bi';
@@ -12,10 +12,9 @@ import MyBarChart from '../../components/charts/MyBarChart';
 import styled from './Dashboard.module.scss';
 import { fetchPosts } from '../../actions/posts';
 import { fetchChartsData } from '../../actions/charts';
-
+import { NavLink } from 'react-router-dom';
 
 const Dashboard = (props) => {
-
   const { fetchPosts } = props;
   const { fetchChartsData } = props;
 
@@ -100,31 +99,41 @@ const Dashboard = (props) => {
         <Col className="col-xl-6">
           <Widget>
             <h3>Posts</h3>
-            <hr></hr>
-            {props.posts && props.posts.slice(0, 6).map(post => (
-              <p key={post.id}>
-                {post.title}
-                <span className="pull-right text-muted">{post.updatedAt}</span>
-              </p>
-            ))}
+            <hr />
+            {props.posts &&
+              props.posts.slice(0, 6).map((post) => (
+                <p key={post.id}>
+                  {post.title}
+                  <span className="pull-right text-muted">
+                    {post.updatedAt}
+                  </span>
+                </p>
+              ))}
+            <hr />
+            <NavLink to={'/app/posts'} exact>
+              See all posts
+            </NavLink>
           </Widget>
         </Col>
       </Row>
-    </div >
+    </div>
   );
-}
+};
 
 const mapStateToProps = (state) => ({
   isFetchingPosts: state.posts.isFetching,
   isFetchingChartsData: state.charts.isFetching,
   posts: state.posts.posts,
-  chartsData: state.charts.chartsData
+  chartsData: state.charts.chartsData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchPosts: () => { dispatch(fetchPosts()) },
-  fetchChartsData: () => { dispatch(fetchChartsData()) }
+  fetchPosts: () => {
+    dispatch(fetchPosts());
+  },
+  fetchChartsData: () => {
+    dispatch(fetchChartsData());
+  },
 });
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

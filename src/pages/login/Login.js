@@ -5,6 +5,7 @@ import { Alert, Button, FormGroup, Input, Row, Col, Form } from 'reactstrap';
 import styled from './Login.module.scss';
 import Widget from '../../components/Widget/Widget';
 import { loginUser, logoutUser } from '../../actions/login';
+import jwt from 'jsonwebtoken';
 
 
 const Login = ({
@@ -115,6 +116,13 @@ function mapStateToProps(state) {
     isAuthenticated: state.login.isAuthenticated,
     errorMessage: state.login.errorMessage,
   };
+}
+
+Login.isAuthenticated = (token) => {
+  if (!token || token === 'undefined') return;
+  const date = new Date().getTime() / 1000;
+  const data = jwt.decode(token);
+  return date < data.exp;
 }
 
 const mapDispatchToProps = (dispatch) => ({

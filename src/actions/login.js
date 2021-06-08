@@ -94,19 +94,18 @@ export function loginUser(creds) {
             return Promise.reject(user);
           }
           localStorage.setItem('id_token', user.id_token);
+          dispatch(receiveLogin('mytoken'));
           dispatch(receiveLogin(user));
           return Promise.resolve(user);
         })
         .catch((err) => console.error('Error: ', err));
     } else {
       localStorage.setItem('id_token', 'mytoken');
-      dispatch(receiveLogin('mytoken'));
     }
   };
 }
 
 export const registerUser = (userData) => {
-  console.log('object')
   const fetchConfig = {
     mode: 'cors',
     method: 'post',

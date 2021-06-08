@@ -93,6 +93,7 @@ export const addNewPost = (postData) => {
         response
       }) => {
         const post = responseJson.data.addPost;
+        console.log('post')
         if (response.ok) {
           dispatch(addNewPostSuccess(post));
           return Promise.resolve(post);

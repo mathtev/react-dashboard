@@ -35,11 +35,6 @@ const Header = (props) => {
     props.logoutUser();
   }
 
-  if (!props.isAuthenticated) {
-    // cant access login page while logged in
-    return <Redirect to={'/login'} />;
-  }
-
   return (
     <Navbar className={styled.root}>
       <Nav>
