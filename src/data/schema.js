@@ -4,6 +4,8 @@ const me = require('./queries/me.js');
 const posts = require('./queries/posts.js');
 const {allPosts, postById} = require('./queries/posts.js');
 const addPost = require('./mutations/addPost.js');
+const deletePost = require('./mutations/deletePost.js');
+const updatePost = require('./mutations/updatePost.js');
 const addUser = require('./mutations/addUser.js');
 
 
@@ -22,6 +24,8 @@ RootQuery.mutation = new GraphQLObjectType({
   name: 'Mutation',
   fields: {
     addPost,
+    updatePost,
+    deletePost,
     addUser
   }
 })

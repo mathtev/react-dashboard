@@ -20,6 +20,14 @@ module.exports = Model.define('Post', {
     type: DataType.STRING(255),
     defaultValue: false,
   },
+  createdAt: {
+    type: DataType.STRING(255),
+    defaultValue: null,
+  },
+  updatedAt: {
+    type: DataType.STRING(255),
+    defaultValue: null,
+  },
 }, {
   indexes: [{
     fields: ['title']

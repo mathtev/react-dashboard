@@ -105,7 +105,7 @@ const Dashboard = (props) => {
                 <p key={post.id}>
                   {post.title}
                   <span className="pull-right text-muted">
-                    {post.updatedAt}
+                    {post.updatedAt ? post.updatedAt : post.createdAt}
                   </span>
                 </p>
               ))}

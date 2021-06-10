@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
-import { Table } from 'reactstrap';
-import { fetchPosts } from '../../../actions/posts';
+import { Button, Table } from 'reactstrap';
+import { deletePost, fetchPosts } from '../../../actions/posts';
 import Widget from '../../../components/Widget/Widget';
 
-const PostsList = ({ isFetching, posts, fetchPosts }) => {
+const PostsList = ({ isFetching, posts, fetchPosts, deletePost }) => {
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [fetchPosts]);
 
   return (
     <div>
@@ -35,15 +35,11 @@ const PostsList = ({ isFetching, posts, fetchPosts }) => {
                   <td>{post.content}</td>
                   <td>
                     {' '}
-                    <Link
-                      to={{
-                        pathname: `/app/posts/${post.id}`,
-                        state: { post },
-                      }}
-                    >
+                    <Link to={{ pathname: `/app/posts/${post.id}` }}>
                       view
                       <br /> details
                     </Link>
+                    <Button onClick={() => deletePost(post.id)}>delete post</Button>
                   </td>
                 </tr>
               ))}
@@ -63,7 +59,9 @@ const mapDispatchToProps = (dispatch) => ({
   fetchPosts: () => {
     dispatch(fetchPosts());
   },
-  //addNewPost: (postData) => { dispatch(addNewPost(postData)) },
+  deletePost: (postId) => {
+    dispatch(deletePost(postId));
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsList);

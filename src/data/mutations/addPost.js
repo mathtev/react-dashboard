@@ -1,4 +1,4 @@
-const { GraphQLNonNull, GraphQLString, GraphQLID } = require('graphql');
+const { GraphQLNonNull, GraphQLString } = require('graphql');
 
 const PostType = require('../types/PostType');
 const Post = require('../models/Post');
@@ -12,7 +12,10 @@ const addPost = {
     },
     content: {
       type: new GraphQLNonNull(GraphQLString)
-    }
+    },
+    createdAt: {
+      type: GraphQLString,
+    },
   },
   resolve: (root, args) => Post.create(args),
 }

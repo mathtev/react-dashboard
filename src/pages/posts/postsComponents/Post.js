@@ -1,32 +1,47 @@
+import { Button } from 'reactstrap';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchPostById } from '../../../actions/posts';
+import { useParams } from 'react-router';
+import { fetchPostById, updatePost } from '../../../actions/posts';
 import Widget from '../../../components/Widget/Widget';
 
-const Post = ({ fetchPostById, posts }) => {
-  useEffect(() => {
-    fetchPostById(2);
-  }, [fetchPostById]);
+const Post = ({ fetchPostById, updatePost, post }) => {
+  const { id } = useParams();
 
-  const post = posts;
-  
+  useEffect(() => {
+    fetchPostById(id);
+  }, [fetchPostById, id]);
+
+  const data = {
+    id: 46,
+    title: 'new beginning',
+    content: 'beginning of a fascinating story',
+  }
+
   return (
     <div>
-      <Widget>
-        {posts && <div>{post.title}</div>}
-      </Widget>
+      {post && (
+        <Widget>
+          <div>{post.title}</div>
+          <div>{post.content}</div>
+          <Button onClick={() => updatePost(data)}>update</Button>
+        </Widget>
+      )}
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   isFetching: state.posts.isFetching,
-  posts: state.posts.posts,
+  post: state.posts.post,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchPostById: (id) => {
     dispatch(fetchPostById(id));
+  },
+  updatePost: (data) => {
+    dispatch(updatePost(data));
   },
 });
 
