@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Alert, Button, Form, FormGroup, Input } from 'reactstrap';
+import { bindActionCreators } from 'redux';
 import { addNewPost } from '../../../actions/posts';
 import Widget from '../../../components/Widget/Widget';
 
 const NewPost = ({ errorMessage, isFetching, addNewPost }) => {
 
+  const [successMsg, setSuccessMsg] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -22,7 +24,7 @@ const NewPost = ({ errorMessage, isFetching, addNewPost }) => {
     addNewPost({
       title,
       content,
-    });
+    }).then(setSuccessMsg('Post add success!'));
   };
 
   return (
@@ -33,6 +35,11 @@ const NewPost = ({ errorMessage, isFetching, addNewPost }) => {
           {errorMessage && (
             <Alert size="sm" color="danger">
               {errorMessage}
+            </Alert>
+          )}
+          {successMsg && (
+            <Alert size="sm" color="success">
+              {successMsg}
             </Alert>
           )}
           <FormGroup className="form-group">
@@ -78,9 +85,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addNewPost: (postData) => {
-    dispatch(addNewPost(postData));
-  },
+  addNewPost: bindActionCreators(addNewPost, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewPost);

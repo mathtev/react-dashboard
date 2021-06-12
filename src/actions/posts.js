@@ -83,7 +83,7 @@ export const fetchPosts = () => {
     }),
   };
   return (dispatch) => {
-    fetch('http://localhost:4000/graphql', fetchConfig)
+    return fetch('http://localhost:4000/graphql', fetchConfig)
       .then((response) => {
         return response.json();
       })
@@ -115,7 +115,7 @@ export const fetchPostById = (postId) => {
     }),
   };
   return (dispatch) => {
-    fetch('http://localhost:4000/graphql', fetchConfig)
+    return fetch('http://localhost:4000/graphql', fetchConfig)
       .then((response) => {
         return response.json();
       })
@@ -158,7 +158,7 @@ export const addNewPost = (postData) => {
     }),
   };
   return (dispatch) => {
-    fetch('http://localhost:4000/graphql', fetchConfig)
+    return fetch('http://localhost:4000/graphql', fetchConfig)
       .then((response) =>
         response.json().then((responseJson) => ({
           responseJson,
@@ -201,19 +201,21 @@ export const deletePost = (id) => {
     }),
   };
   return (dispatch) => {
-    fetch('http://localhost:4000/graphql', fetchConfig).then((response) => {
-      if (response.ok) {
-        dispatch(deletePostSuccess(id));
-        return Promise.resolve();
-      } else {
-        dispatch(
-          deletePostFailure(
-            'Could not delete a post, check deletePost() action'
-          )
-        );
-        return Promise.reject();
+    return fetch('http://localhost:4000/graphql', fetchConfig).then(
+      (response) => {
+        if (response.ok) {
+          dispatch(deletePostSuccess(id));
+          return Promise.resolve();
+        } else {
+          dispatch(
+            deletePostFailure(
+              'Could not delete a post, check deletePost() action'
+            )
+          );
+          return Promise.reject();
+        }
       }
-    });
+    );
   };
 };
 
@@ -238,12 +240,9 @@ export const updatePost = (data) => {
     }),
   };
   return (dispatch) => {
-    fetch('http://localhost:4000/graphql', fetchConfig)
+    return fetch('http://localhost:4000/graphql', fetchConfig)
       .then((response) =>
-        response.json().then((responseJson) => ({
-          responseJson,
-          response,
-        }))
+        response.json().then((responseJson) => ({ responseJson, response }))
       )
       .then(({ response }) => {
         if (response.ok) {

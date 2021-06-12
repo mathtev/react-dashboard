@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router';
 import { fetchPostById, updatePost } from '../../../actions/posts';
 import Widget from '../../../components/Widget/Widget';
+import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 
-const Post = ({ fetchPostById, updatePost, post, errorMessage }) => {
+const EditPost = ({ fetchPostById, updatePost, post, errorMessage }) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -18,15 +20,16 @@ const Post = ({ fetchPostById, updatePost, post, errorMessage }) => {
     content: 'beginning of a fascinating story',
   };
 
+  const [updated, setUpdated] = useState('');
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
 
   useEffect(() => {
-    if(post){
+    if (post) {
       setNewTitle(post.title);
       setNewContent(post.content);
     }
-  }, [post])
+  }, [post]);
 
   const changeTitle = (event) => {
     setNewTitle(event.target.value);
@@ -41,18 +44,28 @@ const Post = ({ fetchPostById, updatePost, post, errorMessage }) => {
       id: post.id,
       title: newTitle,
       content: newContent,
-    });
+    }).then(setUpdated('Update success'))
+    
     e.preventDefault();
   };
 
   return (
     <div>
+      <Link to={{ pathname: `/app/posts` }}>
+        &lt;- Back
+      </Link>
+      <div className="mt-3"></div>
       {post && (
         <Widget>
           <Form className="mt" onSubmit={doUpdate}>
             {errorMessage && (
               <Alert size="sm" color="danger">
                 {errorMessage}
+              </Alert>
+            )}
+            {updated && (
+              <Alert size="sm" color="success">
+                {updated}
               </Alert>
             )}
             <FormGroup className="form-group">
@@ -92,16 +105,12 @@ const Post = ({ fetchPostById, updatePost, post, errorMessage }) => {
 const mapStateToProps = (state) => ({
   isFetching: state.posts.isFetching,
   post: state.posts.post,
-  errorMessage: state.posts.message
+  errorMessage: state.posts.message,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchPostById: (id) => {
-    dispatch(fetchPostById(id));
-  },
-  updatePost: (data) => {
-    dispatch(updatePost(data));
-  },
+  fetchPostById: bindActionCreators(fetchPostById, dispatch),
+  updatePost: bindActionCreators(updatePost, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Post);
+export default connect(mapStateToProps, mapDispatchToProps)(EditPost);
